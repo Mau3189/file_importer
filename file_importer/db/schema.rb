@@ -11,12 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151116000148) do
+ActiveRecord::Schema.define(version: 20151116060320) do
 
   create_table "data_files", force: :cascade do |t|
     t.string   "filename"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "records", force: :cascade do |t|
+    t.string   "campaign_name"
+    t.string   "impressions"
+    t.integer  "clicks"
+    t.integer  "cost"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.datetime "timestamp"
+    t.integer  "data_file_id"
+  end
+
+  add_index "records", ["data_file_id"], name: "index_records_on_data_file_id"
 
 end

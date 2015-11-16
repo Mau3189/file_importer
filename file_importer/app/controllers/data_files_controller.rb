@@ -1,9 +1,12 @@
 class DataFilesController < ApplicationController
-  before_action :set_data_file, only: [:show, :edit, :update, :destroy]
+  before_action :set_data_file, only: [:show, :edit, :update, :destroy, :records]
 
   # GET /data_files
   def index
     @data_files = DataFile.all
+  end
+
+  def records
   end
 
   # GET /data_files/1
@@ -21,9 +24,10 @@ class DataFilesController < ApplicationController
 
   # POST /data_files
   def create
-    @data_file = DataFile.new(data_file_params)
+    @data_file = DataFile.new(filename: params[:file].original_filename)
 
     if @data_file.save
+      Record.import(@data_file, params[:file])
       redirect_to @data_file, notice: 'Data file was successfully created.'
     else
       render :new

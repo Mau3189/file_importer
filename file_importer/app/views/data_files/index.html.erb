@@ -3,9 +3,12 @@
 <h1>Listing Data Files</h1>
 
 <h4>Import a new file</h4>
-<%= form_tag data_files_path, multipart: true do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Import CSV" %>
+<%= form_tag data_files_path, multipart: true, class: 'form-inline' do %>
+  <div class="form-group">
+    <label for="file">File input</label>
+    <%= file_field_tag :file %>
+  </div>
+  <%= submit_tag "Import file", class: 'btn btn-default' %>
 <% end %>
 
 <table class="table">

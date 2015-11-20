@@ -14,22 +14,23 @@
 ActiveRecord::Schema.define(version: 20151116060320) do
 
   create_table "data_files", force: :cascade do |t|
-    t.string   "filename"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "filename",   limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "records", force: :cascade do |t|
-    t.string   "campaign_name"
-    t.string   "impressions"
-    t.integer  "clicks"
-    t.integer  "cost"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.string   "campaign_name", limit: 255
+    t.string   "impressions",   limit: 255
+    t.integer  "clicks",        limit: 4
+    t.integer  "cost",          limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.datetime "timestamp"
-    t.integer  "data_file_id"
+    t.integer  "data_file_id",  limit: 4
   end
 
-  add_index "records", ["data_file_id"], name: "index_records_on_data_file_id"
+  add_index "records", ["data_file_id"], name: "index_records_on_data_file_id", using: :btree
 
+  add_foreign_key "records", "data_files"
 end

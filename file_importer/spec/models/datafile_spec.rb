@@ -7,6 +7,9 @@ describe Datafile do
     expect(datafile).to be_valid
   end
 
+  # associations
+  it { is_expected.to have_many :records }
+
   # validations
   it { is_expected.to validate_uniqueness_of :filename }
 

@@ -1,13 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe DatafilesController, type: :controller do
-  let(:valid_attributes) {
-    FactoryGirl.attributes_for(:datafile)
-  }
+  let(:valid_attributes) { FactoryGirl.attributes_for(:datafile) }
 
-  let(:invalid_attributes) {
-    { filename: nil }
-  }
+  let(:invalid_attributes) { { filename: nil } }
 
   describe "GET #index" do
     it "assigns all datafiles as @datafiles" do

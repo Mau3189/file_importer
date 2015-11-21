@@ -9,6 +9,7 @@ FactoryGirl.define do
     clicks 300
     cost 100_00
     timestamp Time.now
-    datafile { FactoryGirl.build(:datafile) }
+    # datafile { FactoryGirl.build(:datafile) }
+    association :datafile, factory: :datafile
   end
 end

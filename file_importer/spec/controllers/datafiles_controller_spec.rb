@@ -1,15 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe DatafilesController, type: :controller do
-  let(:valid_attributes) { FactoryGirl.attributes_for(:datafile) }
+  let(:valid_attributes) do
+    FactoryGirl.attributes_for(:datafile)
+  end
 
   let(:invalid_attributes) { { filename: nil } }
 
   describe "GET #index" do
     it "assigns all datafiles as @datafiles" do
-      datafile = Datafile.create! valid_attributes
-      get :index, {}
-      expect(assigns(:datafiles)).to eq([datafile])
+      get :index
+      expect(assigns(:datafiles).count).to eq(1)
     end
   end
 
@@ -71,9 +72,9 @@ RSpec.describe DatafilesController, type: :controller do
 
   describe "PUT #update" do
     context "with valid params" do
-      let(:new_attributes) {
+      let(:new_attributes) do
         FactoryGirl.attributes_for(:datafile, filename: 'test2')
-      }
+      end
 
       it "updates the requested datafile" do
         datafile = Datafile.create! valid_attributes

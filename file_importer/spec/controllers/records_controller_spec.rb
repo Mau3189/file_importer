@@ -72,9 +72,9 @@ RSpec.describe RecordsController, type: :controller do
 
   describe "PUT #update" do
     context "with valid params" do
-      let(:new_attributes) {
+      let(:new_attributes) do
         FactoryGirl.attributes_for(:record, clicks: 42)
-      }
+      end
 
       it "updates the requested record" do
         record = Record.create! valid_attributes

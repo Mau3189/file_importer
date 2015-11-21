@@ -1,6 +1,6 @@
 FactoryGirl.define do 
   factory :datafile do
-    filename 'test1'
+    sequence (:filename) { |n| "File#{("A".."Z").to_a[n]}" }
   end
 
   factory :record do
@@ -9,7 +9,6 @@ FactoryGirl.define do
     clicks 300
     cost 100_00
     timestamp Time.now
-    # datafile { FactoryGirl.build(:datafile) }
-    association :datafile, factory: :datafile
+    datafile
   end
 end

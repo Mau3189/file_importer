@@ -7,7 +7,7 @@ RSpec.describe "records/edit", type: :view do
       :impressions => "MyString",
       :clicks => 1,
       :cost => 1,
-      :datafile => nil
+      :datafile => FactoryGirl.create(:datafile)
     ))
   end
 

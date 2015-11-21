@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151120165638) do
+ActiveRecord::Schema.define(version: 20151121045049) do
 
   create_table "datafiles", force: :cascade do |t|
     t.string   "filename",   limit: 255
@@ -19,4 +19,18 @@ ActiveRecord::Schema.define(version: 20151120165638) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "records", force: :cascade do |t|
+    t.string   "campaign_name", limit: 255
+    t.string   "impressions",   limit: 255
+    t.integer  "clicks",        limit: 4
+    t.integer  "cost",          limit: 4
+    t.datetime "timestamp"
+    t.integer  "datafile_id",   limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "records", ["datafile_id"], name: "index_records_on_datafile_id", using: :btree
+
+  add_foreign_key "records", "datafiles"
 end

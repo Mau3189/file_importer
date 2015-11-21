@@ -6,7 +6,7 @@ RSpec.describe DatafilesController, type: :controller do
   }
 
   let(:invalid_attributes) {
-    { file: nil }
+    { filename: nil }
   }
 
   describe "GET #index" do

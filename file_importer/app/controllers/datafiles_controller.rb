@@ -40,11 +40,12 @@ class DatafilesController < ApplicationController
   end
 
   private
-    def set_datafile
-      @datafile = Datafile.find(params[:id])
-    end
 
-    def datafile_params
-      params.require(:datafile).permit(:filename)
-    end
+  def set_datafile
+    @datafile = Datafile.find(params[:id])
+  end
+
+  def datafile_params
+    params.require(:datafile).permit(:filename)
+  end
 end

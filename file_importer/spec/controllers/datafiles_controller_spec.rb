@@ -1,4 +1,5 @@
 require 'rails_helper'
+include ActionDispatch::TestProcess
 
 RSpec.describe DatafilesController, type: :controller do
   let(:valid_attributes) do
@@ -47,21 +48,30 @@ RSpec.describe DatafilesController, type: :controller do
 
   describe "POST #create" do
     context "with valid params" do
+      let(:valid_attributes) do
+        {
+          datafile: {
+            filename: 'test',
+            file: fixture_file_upload('test.zip', 'application/zip')
+          }
+        }
+      end
+
       it "creates a new Datafile" do
         expect {
-          post :create, {:datafile => valid_attributes}
+          post :create, valid_attributes.except(:file)
         }.to change(Datafile, :count).by(1)
       end
 
       it "assigns a newly created datafile as @datafile" do
-        post :create, {:datafile => valid_attributes}
+        post :create, valid_attributes.except(:file)
         expect(assigns(:datafile)).to be_a(Datafile)
         expect(assigns(:datafile)).to be_persisted
       end
 
       it "redirects to the created datafile" do
-        post :create, {:datafile => valid_attributes}
-        expect(response).to redirect_to(Datafile.last)
+        post :create, valid_attributes
+        expect(response).to redirect_to(datafiles_url)
       end
     end
 
@@ -100,7 +110,7 @@ RSpec.describe DatafilesController, type: :controller do
       it "redirects to the datafile" do
         datafile = Datafile.create! valid_attributes
         put :update, {:id => datafile.to_param, :datafile => valid_attributes}
-        expect(response).to redirect_to(datafile)
+        expect(response).to redirect_to(datafiles_url)
       end
     end
 

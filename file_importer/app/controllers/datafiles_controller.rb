@@ -24,7 +24,7 @@ class DatafilesController < ApplicationController
 
     if @datafile.save && file.present?
       Record.import(@datafile, file)
-      redirect_to @datafile, notice: 'Datafile was successfully created.'
+      redirect_to datafiles_url, notice: 'Datafile was successfully created.'
     else
       render :new
     end
@@ -32,7 +32,7 @@ class DatafilesController < ApplicationController
 
   def update
     if @datafile.update(datafile_params)
-      redirect_to @datafile, notice: 'Datafile was successfully updated.'
+      redirect_to datafiles_url, notice: 'Datafile was successfully updated.'
     else
       render :edit
     end

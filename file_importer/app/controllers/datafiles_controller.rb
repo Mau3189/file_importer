@@ -18,11 +18,12 @@ class DatafilesController < ApplicationController
   def edit
   end
 
-  # POST /datafiles
   def create
-    @datafile = Datafile.new(datafile_params)
+    file = datafile_params[:file]
+    @datafile = Datafile.new(datafile_params.except(:file))
 
     if @datafile.save
+      Record.import(@datafile, file)
       redirect_to @datafile, notice: 'Datafile was successfully created.'
     else
       render :new
@@ -49,6 +50,6 @@ class DatafilesController < ApplicationController
   end
 
   def datafile_params
-    params.require(:datafile).permit(:filename)
+    params.require(:datafile).permit(:filename, :file)
   end
 end

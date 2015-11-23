@@ -8,7 +8,6 @@ class Record < ActiveRecord::Base
     FileManager.new(file).unzip_csv(datafile.filename)
     csv_file_path = File.join('/tmp', "#{datafile.filename}.csv")
 
-    # puts csv_file_path
     CSV.foreach(csv_file_path, headers: true) do |row|
       Record.create! datafile_id: datafile.id,
                      campaign_name: row['campaign_name'],

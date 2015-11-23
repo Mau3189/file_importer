@@ -22,7 +22,7 @@ class DatafilesController < ApplicationController
     file = datafile_params[:file]
     @datafile = Datafile.new(datafile_params.except(:file))
 
-    if @datafile.save
+    if @datafile.save && file.present?
       Record.import(@datafile, file)
       redirect_to @datafile, notice: 'Datafile was successfully created.'
     else

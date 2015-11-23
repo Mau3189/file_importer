@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<div>
+  <%= button_to 'Create a Datafile', { action: :new }, method: :get, class: 'btn btn-primary btn-lg pull-right' %>
+</div>
+
+<div>
+  <h1>Listing Datafiles</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Filename</th>
+        <th colspan="3"></th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @datafiles.each do |datafile| %>
+        <tr>
+          <td><%= datafile.filename %></td>
+          <td><%= link_to 'View records', records_datafile_path(datafile) %></td>
+          <td><%= link_to 'Destroy', datafile, method: :delete %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

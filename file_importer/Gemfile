@@ -1,22 +1,29 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.5'
-gem 'sqlite3'
+gem 'mysql2', '~> 0.4.1'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.0.5'
 gem 'therubyracer', platforms: :ruby
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'font-awesome-rails', '~> 4.4.0.0'
-gem 'turbolinks'
-gem 'unicorn'
+gem 'turbolinks', '~> 2.5.3'
+gem 'unicorn', '~> 5.0.0'
+gem 'rubyzip', '~> 1.1.7'
 
 group :development do
   gem 'web-console', '~> 2.0'
 end
 
 group :development, :test do
-  gem 'byebug'
-  gem "rspec-rails", "~> 3.0"
+  gem 'byebug', '~> 8.2.0'
+  gem "rspec-rails", '~> 3.0'
+end
+
+group :test do
+  gem 'database_cleaner', '~> 1.3.0'
+  gem 'factory_girl_rails', '~> 4.4.1'
+  gem 'shoulda-matchers', '~> 3.0'
 end

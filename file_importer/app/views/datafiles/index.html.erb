@@ -8,7 +8,6 @@
   <thead>
     <tr>
       <th>Filename</th>
-      <th>Records</th>
     </tr>
   </thead>
 
@@ -17,6 +16,7 @@
       <tr>
         <td><%= datafile.filename %></td>
         <td><%= link_to 'View records', records_datafile_path(datafile) %></td>
+        <td><%= link_to 'Destroy', datafile, method: :delete %></td>
       </tr>
     <% end %>
   </tbody>

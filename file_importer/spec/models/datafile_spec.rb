@@ -9,6 +9,7 @@ describe Datafile do
 
   # associations
   it { is_expected.to have_many :records }
+  it { is_expected.to have_many(:records).dependent(:destroy) }
 
   # validations
   it { is_expected.to validate_uniqueness_of :filename }

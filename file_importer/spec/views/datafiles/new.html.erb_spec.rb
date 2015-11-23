@@ -7,10 +7,9 @@ RSpec.describe 'datafiles/new', type: :view do
 
   it 'renders new datafile form' do
     render
-
-    assert_select "form[action=?][method=?]", datafiles_path, "post" do
-      assert_select "input#datafile_filename[name=?]", "datafile[filename]"
-      assert_select "input#datafile_file[name=?]", "datafile[file]"
+    assert_select 'form[action=?][method=?]', datafiles_path, 'post' do
+      assert_select 'input#datafile_filename[name=?]', 'datafile[filename]'
+      assert_select 'input#datafile_file[name=?]', 'datafile[file]'
     end
   end
 end

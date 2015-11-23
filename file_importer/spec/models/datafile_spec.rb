@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Datafile do
   subject(:datafile) { FactoryGirl.build(:datafile) }
 
-  it "has a valid Factory" do
+  it 'has a valid Factory' do
     expect(datafile).to be_valid
   end
 

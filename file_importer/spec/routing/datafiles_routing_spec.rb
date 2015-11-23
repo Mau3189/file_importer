@@ -7,6 +7,10 @@ RSpec.describe DatafilesController, type: :routing do
       expect(:get => "/datafiles").to route_to("datafiles#index")
     end
 
+    it "routes to #records" do
+      expect(:get => "/datafiles/1/records").to route_to("datafiles#records", :id => "1")
+    end
+
     it "routes to #new" do
       expect(:get => "/datafiles/new").to route_to("datafiles#new")
     end

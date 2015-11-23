@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   resources :records
   root 'datafiles#index'
-  resources :datafiles
+  resources :datafiles do
+    member { get :records }
+  end
 end

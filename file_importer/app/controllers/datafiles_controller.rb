@@ -1,8 +1,11 @@
 class DatafilesController < ApplicationController
-  before_action :set_datafile, only: [:show, :edit, :update, :destroy]
+  before_action :set_datafile, only: [:show, :edit, :update, :destroy, :records]
 
   def index
     @datafiles = Datafile.all
+  end
+
+  def records
   end
 
   def show

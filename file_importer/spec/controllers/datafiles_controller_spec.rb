@@ -14,6 +14,14 @@ RSpec.describe DatafilesController, type: :controller do
     end
   end
 
+  describe "GET #records" do
+    it "assigns the requested datafile as @datafile" do
+      datafile = Datafile.create! valid_attributes
+      get :records, {:id => datafile.to_param}
+      expect(assigns(:datafile)).to eq(datafile)
+    end
+  end
+
   describe "GET #show" do
     it "assigns the requested datafile as @datafile" do
       datafile = Datafile.create! valid_attributes

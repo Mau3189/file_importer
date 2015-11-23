@@ -92,7 +92,7 @@ RSpec.describe RecordsController, type: :controller do
       it "redirects to the record" do
         record = Record.create! valid_attributes
         put :update, {:id => record.to_param, :record => valid_attributes}
-        expect(response).to redirect_to(record)
+        expect(response).to redirect_to(records_url)
       end
     end
 
